@@ -2,6 +2,16 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
+const card = document.querySelector('.cards')
+axios.get('https://api.github.com/users/Bigorange8801')
+.then( data =>{
+  console.log('proof of life',data)
+  const card1 = createCard(data.data)
+  card.appendChild(card1)
+})
+.catch( error =>{
+  console.log('no life to prove', error)
+});
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
@@ -45,6 +55,36 @@ const followersArray = [];
 </div>
 
 */
+function createCard(details){
+  const card= document.createElement('div')
+  const img = document.createElement('img')
+  const cardInfo = document.createElement('div') 
+  const name = document.createElement('h3')
+  const userName= document.createElement('p')
+  const location= document.createElement('p')
+  const profile= document.createElement('p')
+  const followers= document.createElement('p')
+  const following= document.createElement('p')
+  const bio= document.createElement('p')
+  
+  card.classList.add('card')
+  img.classList.add('img')
+  cardInfo.classList.add('cardInfo')
+
+// textcontent before append
+  card.appendChild(img)
+  card.appendChild(cardInfo)
+  card.appendChild(name)
+  card.appendChild(userName)
+  card.appendChild(location)
+  card.appendChild(profile)
+  card.appendChild(followers)
+  card.appendChild(following)
+  card.appendChild(bio)
+  
+  return card
+}
+
 
 /* List of LS Instructors Github username's: 
   tetondan
